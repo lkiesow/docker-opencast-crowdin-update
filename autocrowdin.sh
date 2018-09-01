@@ -7,10 +7,8 @@ update() {
 	git checkout "$1"
 	java -jar /opt/crowdin/crowdin-cli.jar --config .crowdin.yaml download -b "$2"
 	git clean -f
-	git config  user.email 'crowdin-bot@opencast.org'
-	git config user.name 'Crowdin Bot'
 	git commit -a -m "Automatically update translation keys ($1)"
-	echo git push origin "$1"
+	git push origin "$1"
 	git clean -fdx
 }
 
@@ -28,7 +26,10 @@ set -o xtrace
 # clone repository
 git clone git@github.com:opencast/opencast.git
 cd opencast
+git config  user.email 'crowdin-bot@opencast.org'
+git config user.name 'Crowdin Bot'
 
+# Update develop and latest two release branches
 update develop develop
 for branch in $(git branch -r | sed -n 's_.* origin/r/__p' | tail -n 2); do
 	update "r/$branch" "$branch"
