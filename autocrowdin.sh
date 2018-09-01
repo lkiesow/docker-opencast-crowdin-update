@@ -9,7 +9,7 @@ update() {
 	git clean -f
 	git config  user.email 'crowdin-bot@opencast.org'
 	git config user.name 'Crowdin Bot'
-	git commit -a -m 'Automatically update translation keys'
+	git commit -a -m "Automatically update translation keys ($1)"
 	echo git push origin "$1"
 	git clean -fdx
 }
