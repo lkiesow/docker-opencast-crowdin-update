@@ -19,4 +19,8 @@ RUN cd /opt/crowdin \
 ADD autocrowdin.sh /opt/bin/autocrowdin
 RUN chmod 755 /opt/bin/autocrowdin
 
+# Ensure ~/.ssh exists
+RUN mkdir ~/.ssh/
+RUN chmod 700 ~/.ssh/
+
 CMD ["/opt/bin/autocrowdin"]
