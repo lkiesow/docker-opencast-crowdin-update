@@ -1,6 +1,7 @@
 #!/bin/sh
 
-set -eux
+set -o nounset
+set -o errexit
 
 update() {
 	git checkout "$1"
@@ -20,6 +21,9 @@ echo "api_key: ${CROWDIN_API_KEY}" > ~/.crowdin.yaml
 echo "${GITHUB_DEPLOY_KEY}" > ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
 ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+# Log commands (do not log keys above)
+set -o xtrace
 
 # clone repository
 git clone git@github.com:opencast/opencast.git
