@@ -5,7 +5,7 @@ Docker container to automatically retrieve translation updates from Crowdin and
 push them to the official repository.
 
 ```bash
-$ docker run --name http-proxy \
+$ docker run \
   -e CROWDIN_API_KEY=123 \
   -e GITHUB_DEPLOY_KEY=234 \
   quay.io/lkiesow/opencast-crowdin-update
