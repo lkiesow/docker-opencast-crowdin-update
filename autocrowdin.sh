@@ -7,8 +7,9 @@ update() {
 	git checkout "$1"
 	java -jar /opt/crowdin/crowdin-cli.jar --config .crowdin.yaml download -b "$2"
 	git clean -f
-	git commit -a -m "Automatically update translation keys ($1)"
-	git push origin "$1"
+	if git commit -a -m "Automatically update translation keys ($1)"; then
+		git push origin "$1"
+	fi
 	git clean -fdx
 }
 
