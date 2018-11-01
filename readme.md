@@ -6,6 +6,7 @@ push them to the official repository.
 
 ```bash
 $ docker run \
+  --rm \
   -e CROWDIN_API_KEY=123 \
   -e GITHUB_DEPLOY_KEY=234 \
   quay.io/lkiesow/opencast-crowdin-update
