@@ -13,6 +13,12 @@ update() {
 	git clean -fdx
 }
 
+# Ensure keys are being removed at the end
+cleanup() {
+	rm -f ~/.crowdin.yaml ~/.ssh/id_rsa
+}
+trap cleanup EXIT
+
 # Prepare crowdin configuration
 echo "api_key: ${CROWDIN_API_KEY}" > ~/.crowdin.yaml
 
