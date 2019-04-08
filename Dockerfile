@@ -2,7 +2,7 @@ FROM alpine:latest
 MAINTAINER Lars Kiesow <lkiesow@uos.de>
 
 # Install certbot and cloudflare plugin
-RUN apk --update add \
+RUN apk --no-cache add \
     openjdk8-jre-base \
     openssh-client \
     git
@@ -20,7 +20,7 @@ ADD autocrowdin.sh /opt/bin/autocrowdin
 RUN chmod 755 /opt/bin/autocrowdin
 
 # Ensure ~/.ssh exists
-RUN mkdir ~/.ssh/
-RUN chmod 700 ~/.ssh/
+RUN mkdir ~/.ssh/ \
+    && chmod 700 ~/.ssh/
 
 CMD ["/opt/bin/autocrowdin"]
