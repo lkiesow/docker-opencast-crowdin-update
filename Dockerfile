@@ -5,6 +5,7 @@ MAINTAINER Lars Kiesow <lkiesow@uos.de>
 RUN apk --no-cache add \
     openjdk8-jre-base \
     openssh-client \
+    nss \
     git
 
 # Install Crowdin client
