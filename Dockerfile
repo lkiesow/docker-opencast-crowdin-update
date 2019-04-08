@@ -3,17 +3,17 @@ MAINTAINER Lars Kiesow <lkiesow@uos.de>
 
 # Install certbot and cloudflare plugin
 RUN apk --update add \
-   openjdk8-jre-base \
-	openssh-client \
-   git
+    openjdk8-jre-base \
+    openssh-client \
+    git
 
 # Install Crowdin client
 RUN mkdir -p /opt/crowdin
 RUN cd /opt/crowdin \
-   && wget https://downloads.crowdin.com/cli/v2/crowdin-cli.zip \
-   && unzip crowdin-cli.zip \
-   && mv */crowdin-cli.jar . \
-   && rm -r $(ls | grep -v '\.jar$')
+    && wget https://downloads.crowdin.com/cli/v2/crowdin-cli.zip \
+    && unzip crowdin-cli.zip \
+    && mv */crowdin-cli.jar . \
+    && rm -r $(ls | grep -v '\.jar$')
 
 # Add start script
 ADD autocrowdin.sh /opt/bin/autocrowdin
